@@ -17,43 +17,40 @@ interface scale of the game's settings):
 - **1920 × 1080, interface at 150 %**, the same window;
 - **1280 × 720, interface at 80 %**, the lowest the game's settings offer, in a window.
 
-[KSP-Util-MCPServer](https://github.com/lhervier/KSP-Util-MCPServer) is installed in both runs: it entered
-the map view, took the screenshots, and set every filter back on between the runs. The computer's session
-was locked during these runs, so Windows sent no mouse input to the game. The clicks are window messages
-instead, posted to KSP's window by a script at fixed points of the window: the mouse moved to the point,
-then its button pressed and released there, the messages Windows sends for a real click. KSP reads them
-through its usual input: on stock, the click on the top row gives the same answer as the real clicks of
-the map view protocol. Nothing else moved the mouse.
+[KSP-Util-MCPServer](https://github.com/lhervier/KSP-Util-MCPServer) is installed in both runs, to play the
+protocol by script.
 
 ## The protocol
 
-Any vessel in flight will do; here, a small capsule on the launch pad of a sandbox game. Every filter is on
-at the start, and the row of filters is folded. The steps are those of the map view protocol:
+The save of the map view protocol, [map-filter-kerbin.sfs](../diag/map-filter-kerbin.sfs): a small capsule
+on the launch pad of a sandbox game, every vessel filter on. The row of filters is folded. The steps are
+those of the map view protocol:
 
-1. Enter the map view (here, through KSP-Util-MCPServer, before the first screenshot).
+1. Enter the map view.
 2. Click the top row of pixels of the screen, over the middle of the tab.
-3. If the row is still folded, click the tab lower down.
+3. If the row is still folded, click the tab lower down, below the hidden filter buttons.
 4. Click the second filter of the row, *Probes*.
 5. Right-click the fifth, *Ships*: that shows ships alone.
 6. Click the tab, under the open row, to fold it.
 
-The interface scale changes the size of the row and of the tab, so the points clicked change with it, in
-pixels from the left and from the top of the window:
+**Played by a script.** [run-filters.py](../diag/automation/run-filters.py), with `--protocol map-view`,
+in each configuration, as for [the map view](checking-map-view.md#the-protocol). The interface scale
+changes the size of the row and of the tab, and the script finds the points it clicks in each
+configuration by moving the pointer over the screen first. They came out, in pixels from the left and from
+the top of the window:
 
 | | 1920 × 1080, 100 % | 1920 × 1080, 150 % | 1280 × 720, 80 % |
 |---|---|---|---|
-| Middle of the tab (steps 2, 3 and 6) | 996 | 1014 | 668 |
+| Middle of the tab (steps 2, 3 and 6) | 996 | 1013 | 668 |
 | Step 2, the top row | 0 | 0 | 0 |
-| Step 3, the tab lower down | 10 | 10 | 6 |
-| Steps 4 and 5, *Probes* and *Ships* | 835 and 922, at 15 | 771 and 904, at 20 | 540 and 610, at 11 |
-| Step 6, the tab under the open row | 34 | 48 | 28 |
-
-At 80 %, ten pixels down is already below the folded tab: step 3 clicks it six pixels down.
+| Step 3, the tab lower down | 6 | 10 | 5 |
+| Steps 4 and 5, *Probes* and *Ships* | 834 and 922, at 15 | 771 and 903, at 23 | 539 and 610, at 12 |
+| Step 6, the tab under the open row | 35 | 54 | 28 |
 
 A screenshot follows each of steps 2 to 6. The images below are the top of the screen, around the row of
 filters, at 640 pixels wide: the same part of the interface in each configuration, so the frame grows
 with the interface scale (between 768 and 1248 pixels from the left and 64 high at 1920 × 1080, 100 %;
-672 to 1392 and 96 high at 150 %; 486 to 870 and 51 high at 1280 × 720, 80 %). An unchecked filter has a
+671 to 1391 and 96 high at 150 %; 486 to 870 and 51 high at 1280 × 720, 80 %). An unchecked filter has a
 black icon.
 
 ## 1920 × 1080, interface at 100 %

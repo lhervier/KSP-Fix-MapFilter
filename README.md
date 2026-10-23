@@ -14,8 +14,9 @@ Here is what it fixes:
 **How this was made.** The investigation and the code were written with Claude, Anthropic's AI
 assistant. Everything here was reviewed and validated by a human — me. I am saying so up front, because
 contributions made with an AI deserve a closer look than others, and because some people would rather
-stop reading here. That look should be quick: the stock code involved is named on this page, and the fix
-is one short file you can read in a few minutes.
+stop reading here. That look should be quick: the stock code involved is named on this page, every check
+below is read on screenshots of the game, taken by a public script that plays its protocol, and the fix is
+one short file you can read in a few minutes.
 
 ## Why a click at the top of the screen matters
 

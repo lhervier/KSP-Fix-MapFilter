@@ -16,16 +16,23 @@ by hand before KSP starts. The altimeter then sits right of the middle of the sc
 
 ## The protocol
 
-A small capsule on the launch pad of a sandbox game. Every filter is on at the start.
+The save of [the map view](checking-map-view.md#the-protocol), [map-filter-kerbin.sfs](../diag/map-filter-kerbin.sfs):
+a small capsule on the launch pad of a sandbox game, every vessel filter on. Copy it into the folder of a
+sandbox game, and load it.
 
 1. Press M to enter the map view, and click the top row of pixels of the screen, over the middle of the
    tab.
-2. If the row is still folded, click the tab ten pixels lower.
+2. If the row is still folded, click the tab lower down, below the hidden filter buttons.
 3. Press M to leave the map view, and M again to come back.
 4. Click the top row of pixels, over the middle of the tab.
-5. If the row is still folded, click the tab ten pixels lower.
+5. If the row is still folded, click the tab lower down.
 6. Click the second filter of the row, *Probes*, then right-click the fifth, *Ships*: that shows ships
    alone.
+
+**Played by a script.** [run-filters.py](../diag/automation/run-filters.py), with
+`--protocol altimeter-moved`. It enters and leaves the map view as the M key does, and finds the points it
+clicks as for [the map view](checking-map-view.md#the-protocol). It takes a screenshot at the start, in the
+flight view (the image above), then after each step, after both clicks at step 6.
 
 A screenshot follows each step. The images below are cropped as for
 [the map view](checking-map-view.md#the-protocol). An unchecked filter has a black icon.
@@ -37,10 +44,10 @@ Read off the screenshots below:
 | Step | The row | Filters off |
 |---|---|---|
 | 1. Click on the top row | **folded** | — |
-| 2. Click ten pixels lower | open | **Planes** |
+| 2. Click lower down | open | **Planes** |
 | 3. M, M | folded | — |
 | 4. Click on the top row | **folded** | — |
-| 5. Click ten pixels lower | open | **none** |
+| 5. Click lower down | open | **none** |
 | 6. *Probes*, then right-click on *Ships* | open | every one but Ships |
 
 As with the altimeter at its place, the click on the top row leaves the row folded and turns the planes
@@ -56,9 +63,9 @@ After the click on the top row:
 
 ![After the click on the top row, on stock](../imgs/checking-altimeter-moved/stock/1-click-top-edge.jpg)
 
-After the click ten pixels lower:
+After the click lower down:
 
-![After the click ten pixels lower, on stock](../imgs/checking-altimeter-moved/stock/2-row-open.jpg)
+![After the click lower down, on stock](../imgs/checking-altimeter-moved/stock/2-row-open.jpg)
 
 Back in the map view:
 
@@ -68,9 +75,9 @@ After the second click on the top row:
 
 ![After the second click on the top row, on stock](../imgs/checking-altimeter-moved/stock/4-click-top-edge-again.jpg)
 
-After the second click ten pixels lower:
+After the second click lower down:
 
-![After the second click ten pixels lower, on stock](../imgs/checking-altimeter-moved/stock/5-row-open.jpg)
+![After the second click lower down, on stock](../imgs/checking-altimeter-moved/stock/5-row-open.jpg)
 
 After Probes and Ships:
 

@@ -10,12 +10,21 @@ The same as for [the map view](checking-map-view.md#the-install).
 
 ## The protocol
 
-A sandbox game with a few vessels: two landed on Kerbin, and a small capsule on the launch pad. Every
-filter is on at the start.
+The save of [the map view](checking-map-view.md#the-protocol), [map-filter-kerbin.sfs](../diag/map-filter-kerbin.sfs):
+a sandbox game with a few vessels, two rovers landed on Kerbin and a small capsule on the launch pad, every
+vessel filter on. Copy it into the folder of a sandbox game, and load it.
 
-1. Open the tracking station from the space centre. On a first visit, it shows a welcome message: close it.
+1. Leave the flight for the space centre, and open the tracking station. On a first visit, it shows a
+   welcome message: close it.
 2. Click the second filter of the top bar, *Probes*.
 3. Right-click the fifth, *Ships*: that shows ships alone.
+
+**Played by a script.** [run-filters.py](../diag/automation/run-filters.py), with
+`--protocol tracking-station`. It goes to the space centre and to the tracking station as the game's
+buttons do, closes a welcome message by its button if one shows, and waits five seconds for the name of
+the body in view to fade from the screen. It finds each filter by moving the pointer along the top bar
+first and reading what lies under it, and clicks the middle of its button with the mouse tools of
+KSP-Util-MCPServer.
 
 A screenshot follows each step. The images below are the top left of the screen, 960 by 260 pixels, at 640
 pixels wide: the list of tracked objects, and the filters. An unchecked filter has a black icon.

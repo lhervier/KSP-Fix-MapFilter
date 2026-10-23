@@ -8,22 +8,32 @@ tab open the row, and do the filters still respond? Played without this mod, the
 
 KSP 1.12.5 with KSP Community Fixes 1.41.1, in French, in a 1280 × 720 window, with Map Filter Fix 0.1.0
 at `Debug` for *With this mod*. KSPCF's altimeter is at its stock place.
-
-[KSP-Util-MCPServer](https://github.com/lhervier/KSP-Util-MCPServer) is installed in both: it took the
-screenshots, and it set every filter back on between the runs. The clicks are real mouse clicks, sent to
-Windows by a script at fixed points of the window; nothing else moved the mouse.
+[KSP-Util-MCPServer](https://github.com/lhervier/KSP-Util-MCPServer) is installed in both, to play the
+protocol by script.
 
 ## The protocol
 
-Any vessel in flight will do; here, a small capsule on the launch pad of a sandbox game. Every filter is on
-at the start, and the row of filters is folded.
+Any vessel in flight will do. The save is [map-filter-kerbin.sfs](../diag/map-filter-kerbin.sfs): a small
+capsule on the launch pad of a sandbox game, every vessel filter on. Copy the save into the folder of a
+sandbox game, and load it. The row of filters is folded.
 
-1. Enter the map view (here, through KSP-Util-MCPServer, before the first screenshot).
+1. Enter the map view.
 2. Click the top row of pixels of the screen, over the middle of the tab.
-3. If the row is still folded, click the tab ten pixels lower.
+3. If the row is still folded, click the tab lower down, below the hidden filter buttons.
 4. Click the second filter of the row, *Probes*.
 5. Right-click the fifth, *Ships*: that shows ships alone.
 6. Click the tab, under the open row, to fold it.
+
+**Played by a script.** [run-filters.py](../diag/automation/run-filters.py) plays it through
+KSP-Util-MCPServer. Python 3 only, nothing to install: start KSP with KSP-Util-MCPServer, copy the save
+into a sandbox game, then run
+`python run-filters.py --folder <your sandbox game> --protocol map-view --out out`. It enters the map view
+as the M key does, and clicks with the mouse tools of KSP-Util-MCPServer. It finds each point by moving the
+pointer over the screen first and reading what lies under it: the middle of the tab on the top row (676
+pixels from the left here); at step 3, the middle of the rows where the tab, and no hidden button, is on
+top (6 pixels from the top here); the middle of each filter's button; the middle of the tab under the open
+row. Between two steps, the pointer rests on empty space, away from the top of the screen, where it would
+unfold the altimeter over the tab.
 
 A screenshot follows each of steps 2 to 6. The images below are the top of the screen, between 448 and
 928 pixels from the left and 64 pixels high, at 640 pixels wide. An unchecked filter has a black icon.
@@ -35,7 +45,7 @@ Read off the screenshots below:
 | Step | The row | Filters off |
 |---|---|---|
 | 2. Click on the top row | **folded** | — |
-| 3. Click ten pixels lower | open | **Planes** |
+| 3. Click lower down | open | **Planes** |
 | 4. Click on *Probes* | open | Probes, Planes |
 | 5. Right-click on *Ships* | open | every one but Ships |
 | 6. Click on the tab | folded | — |
@@ -52,9 +62,9 @@ After the click on the top row:
 
 ![After the click on the top row, on stock](../imgs/checking-map-view/stock/1-click-top-edge.jpg)
 
-After the click ten pixels lower:
+After the click lower down:
 
-![After the click ten pixels lower, on stock](../imgs/checking-map-view/stock/2-row-open.jpg)
+![After the click lower down, on stock](../imgs/checking-map-view/stock/2-row-open.jpg)
 
 After the click on Probes:
 
