@@ -45,13 +45,19 @@ namespace com.github.lhervier.ksp.fix.mapfilter
 
         /// <summary>
         /// Prepares the fix for the filter panel of <paramref name="mapViewFiltering"/>. Removes itself, leaving
-        /// the panel as on stock, when the panel does not have the shape it expects: two positions or more, and
-        /// filter buttons.
+        /// the filters as on stock, when they do not fold (the tracking station's) or when the panel does not
+        /// have the shape it expects: two positions or more, and filter buttons.
         /// </summary>
         private void Init(MapViewFiltering mapViewFiltering)
         {
             filtering = mapViewFiltering;
-            UIPanelTransition.PanelPosition[] states = filtering.panel != null ? filtering.panel.states : null;
+            if (filtering.panel == null)
+            {
+                Log.Debug("These vessel filters do not fold, nothing to fix");
+                Destroy(this);
+                return;
+            }
+            UIPanelTransition.PanelPosition[] states = filtering.panel.states;
             if (states == null || states.Length < 2 || filtering.FilterButtons == null)
             {
                 Log.Warning("The vessel filter panel does not have the expected positions or buttons, it is left as on stock");

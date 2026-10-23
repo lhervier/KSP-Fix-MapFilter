@@ -69,7 +69,8 @@ mod gives the stock behaviour back at once.
 - **`foldedFiltersIgnoreClicks`.** After `MapViewFiltering.Start`, the mod gives each filter button a
   `CanvasGroup`, and turns off its `blocksRaycasts` while the panel rests folded. As soon as the panel
   moves, either way, the buttons take clicks again, as on stock. The tab itself is left alone: its
-  clickable area already reaches the top edge of the screen.
+  clickable area already reaches the top edge of the screen. The tracking station's filters, which have
+  no tab and never fold, are left alone too.
 - **How "folded" is told.** The panel's two positions are named `Out` for the folded one and `In` for the
   open one, so `UIPanelTransitionToggle.expanded` is true while the panel is folded. The mod does not use
   it: the folded position is the higher of the two, the one that hides the panel above the screen.
@@ -77,29 +78,39 @@ mod gives the stock behaviour back at once.
   other mods may rely on: KSP Community Fixes' `AltimeterHorizontalPosition` hides and shows this panel
   around the map view. Turning off the clicks of hidden buttons changes nothing that can be seen.
 
+## Checked: the map view
+
+In the map view of a flight, the tab is clicked on the top row of pixels, then a filter of the open row is
+clicked and another right-clicked. On stock, the row stays folded and the planes filter goes off; with this
+mod, the row opens, no filter changes, and the filters respond as on stock.
+
+**→ Full chapter: [Checking the map view](docs/checking-map-view.md)**
+
+## Checked: the tracking station
+
+The tracking station shows the same filters, in its top bar, with no tab. A filter is clicked and another
+right-clicked. On stock as with this mod, both respond: the mod leaves these filters alone, and its log
+says so.
+
+**→ Full chapter: [Checking the tracking station](docs/checking-tracking-station.md)**
+
+## Checked: KSP Community Fixes with the altimeter moved
+
+With KSPCF's altimeter moved, the tab is clicked on the top row of pixels before and after leaving the map
+view and coming back. On stock, the row stays folded both times, and each click toggles the planes filter;
+with this mod, it opens both times, and no filter changes.
+
+**→ Full chapter: [Checking KSP Community Fixes with the altimeter moved](docs/checking-altimeter-moved.md)**
+
 ## Work in progress
 
-The patch acts on the vessel filter panel wherever `MapViewFiltering` runs. Each point below is a place
-where it changes what stock does, and so where it could break something. What you would see, and how to
-check it by hand:
+The patch acts on the vessel filter panel of the map view. The point below is a place where it changes
+what stock does, and so where it could break something. What you would see, and how to check it by hand:
 
-- **The tab and the filters, in the flight scene's map view.** The tab would not open, or a filter button
-  of the open row would not respond. In the map view, throw the mouse against the top edge of the screen
-  over the tab and click: the row opens, and every filter is as it was. Then click a filter of the open
-  row, and right-click another (which shows that type alone): both respond. Close the row, and do it
-  again without this mod: the click at the edge leaves the row folded, and the next time it is opened, a
-  filter has changed.
-- **The tracking station.** Its vessel filters may use the same panel. A filter button that would not
-  respond there, or a click at the top edge that would still toggle a filter: open the tracking station,
-  and play the same checks as in the map view, without this mod and with it.
-- **KSP Community Fixes with the altimeter moved.** `AltimeterHorizontalPosition` hides the panel outside
-  the map view when the altimeter is not at its stock position, and shows it again in the map view. A row
-  that would not open, or a filter button that would not respond, after leaving the map view and coming
-  back: move the altimeter in the pause menu settings, then play the map view checks again, leaving the
-  map view and coming back between them.
 - **Other screen sizes and interface scales.** How far the hidden buttons reach into the screen follows
-  the size of the interface. Play the map view checks at another resolution, and with another interface
-  scale in the settings.
+  the size of the interface. A click on the top row that would still toggle a filter: play
+  [the map view protocol](docs/checking-map-view.md#the-protocol) at another resolution, and with another
+  interface scale in the settings, without this mod and with it.
 
 ## Install
 
@@ -121,7 +132,7 @@ logLevel = Info
 
 - With `foldedFiltersIgnoreClicks = False`, the filter buttons take clicks as on stock.
 - At `Debug`, the mod writes one line to `KSP.log` every time the filter buttons start or stop ignoring
-  clicks.
+  clicks, and one when it finds filters that do not fold, as in the tracking station.
 
 ## Build
 
