@@ -1,6 +1,6 @@
 # Map Filter Fix
 
-**⚠️ Work in progress.** This is a new fix, not a finished mod. The code and the conclusions on this page can still change, and what is still to be checked is listed in [Work in progress](#work-in-progress).
+**⚠️ Not finished yet.** This is a new fix, not a finished mod. The code and the conclusions on this page can still change.
 
 A fix for stock KSP 1.12, kept as small as possible: one Harmony patch, in one short source file. It is a
 mod of its own, built on top of
@@ -102,15 +102,13 @@ with this mod, it opens both times, and no filter changes.
 
 **→ Full chapter: [Checking KSP Community Fixes with the altimeter moved](docs/checking-altimeter-moved.md)**
 
-## Work in progress
+## Checked: other screen sizes and interface scales
 
-The patch acts on the vessel filter panel of the map view. The point below is a place where it changes
-what stock does, and so where it could break something. What you would see, and how to check it by hand:
+The map view protocol is played again at 1920 × 1080, interface at 100 % and 150 %, and at 1280 × 720,
+at 80 %. Each time, the click on the top row turns the planes filter off on stock, and opens the
+row with this mod.
 
-- **Other screen sizes and interface scales.** How far the hidden buttons reach into the screen follows
-  the size of the interface. A click on the top row that would still toggle a filter: play
-  [the map view protocol](docs/checking-map-view.md#the-protocol) at another resolution, and with another
-  interface scale in the settings, without this mod and with it.
+**→ Full chapter: [Checking other screen sizes and interface scales](docs/checking-screen-sizes.md)**
 
 ## Install
 
