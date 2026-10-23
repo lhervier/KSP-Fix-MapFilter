@@ -24,9 +24,30 @@ buttons that choose which types of vessels the map shows: probes, stations, debr
 touches the top edge of the screen, so the natural gesture is to throw the mouse up against the edge and
 click.
 
-On stock, that click does not open the row. Worse, it toggles the filter whose hidden button sits above
-the cursor: over the tab, planes or bases. Nothing on screen says so; those vessels leave the map, and
-the player only finds out later, from the unchecked button, the next time the row is open.
+<img src="imgs/why-a-click-at-the-top-matters/map-view.jpg" width="640" alt="The map view, the tab that opens the vessel filters ringed at the top of the screen">
+
+On stock, the mouse on the top row of pixels does not reach the tab: the tab does not light up, and its
+tooltip does not show. Ten pixels lower, both do.
+
+<img src="imgs/why-a-click-at-the-top-matters/cursor-top-row.jpg" width="640" alt="The mouse on the top row of pixels, over the tab: no highlight, no tooltip">
+
+<img src="imgs/why-a-click-at-the-top-matters/cursor-10-px-lower.jpg" width="640" alt="The mouse ten pixels lower, over the tab: the arrow lights up and the tooltip shows">
+
+So a click on the top row does not open the row of filters. Worse, it toggles the filter whose hidden
+button sits above the cursor, along the whole width of the row. Nothing on screen says so; those vessels
+leave the map, and the player only finds out later, from the unchecked button, the next time the row is
+open. Below, a click on the top row, left of the tab, then the row opened: the landers filter is off.
+
+<img src="imgs/why-a-click-at-the-top-matters/click-top-row.jpg" width="640" alt="A click on the top row of pixels, left of the tab: the row of filters stays folded">
+
+<img src="imgs/why-a-click-at-the-top-matters/row-opened-after.jpg" width="640" alt="The row of filters opened afterwards: the landers filter, right under the click, is off">
+
+*KSP 1.12.5 without this mod, with [KSP Community Fixes](https://github.com/KSPModdingLibs/KSPCommunityFixes),
+in French, in a 1280 × 720 window, in the map view of a flight on the launch pad. Screenshots do not show
+the mouse cursor: it is drawn where it was. The four close-ups are cropped from the top of the screen and
+zoomed twice. First, the mouse rests on the top row of pixels over the tab, then ten pixels lower, a
+couple of seconds each. Then it is moved to the top row, 106 pixels left of the tab's centre, and clicked;
+the row of filters is opened afterwards, the mouse away from it.*
 
 ## The culprit: the folded row keeps its buttons just above the screen
 
